@@ -1,8 +1,13 @@
 [package]
 name = "atrox"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["marcio"]
 edition = "2018"
 
-[dependencies]
-gtk = { version = "^0.6.0", features = ["v3_22"] }
+[dependencies.gtk]
+version = "0.8.1"
+features = ["v3_16"]
+
+[dependencies.glib]
+version = "0.9.3"
+

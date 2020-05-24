@@ -2,8 +2,12 @@
 #[allow(unused)]
 
 extern crate gtk;
-use gtk::*;
+extern crate glib;
 
+use gtk::prelude::*;
+
+#[macro_use]
+mod utils;
 mod atroxui;
 mod calculos;
 
@@ -19,7 +23,6 @@ fn main() {
 
 	ui.run(ui.clone());
 	ui.window.show_all();
-
 
 	gtk::main();
 }

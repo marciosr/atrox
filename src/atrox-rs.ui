@@ -47,7 +47,7 @@
     <property name="step_increment">1</property>
     <property name="page_increment">10</property>
   </object>
-  <object class="GtkWindow" id="window">
+  <object class="GtkApplicationWindow" id="window">
     <property name="can_focus">False</property>
     <child>
       <object class="GtkNotebook">
@@ -515,7 +515,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkSpinButton" id="sb_area_bacia">
+              <object class="GtkSpinButton" id="spin_area_bacia">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="adjustment">adjustment_area</property>
@@ -1341,7 +1341,7 @@
               </packing>
             </child>
             <child>
-              <object class="GtkSpinButton" id="sb_dec_canal">
+              <object class="GtkSpinButton" id="spin_dec_canal">
                 <property name="visible">True</property>
                 <property name="can_focus">True</property>
                 <property name="adjustment">adjustment_declividade_canal</property>

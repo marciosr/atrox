@@ -1,10 +1,8 @@
 #[allow(unused)]
-
-extern crate gtk;
-
-use gtk::*;
-//use std::string::String;
+use gtk::prelude::*;
+use gtk::{Builder, Button, Label, HeaderBar, ApplicationWindow, Entry, SpinButton, RadioButton, Adjustment};
 use std::rc::Rc;
+use glib::{clone};
 
 use crate::calculos::Calculos;
 
@@ -26,10 +24,9 @@ impl Clone for ValorRadios {
 	fn clone(&self) -> ValorRadios { *self }
 }
 
-
 pub struct AtroxUi {
 	pub builder: Builder,
-	pub window: Window,
+	pub window: ApplicationWindow,
 	pub header_bar: HeaderBar,
 	pub bt_calcular: Button,
 	pub bt_calcula2: Button,
@@ -96,92 +93,79 @@ pub struct AtroxUi {
 
 impl AtroxUi {
 	pub fn new() -> Rc<Self> {
+
 		let glade_src = include_str!("atrox-rs.ui");
 		let builder = gtk::Builder::new_from_string(glade_src);
-		let window: gtk::Window = builder.get_object("window").unwrap();
 
-		let header_bar: HeaderBar = builder.get_object("header_bar").unwrap();
-		let bt_calcular: Button = builder.get_object("bt_calcular").unwrap();
-		let bt_calcula2: Button = builder.get_object("bt_calcular").unwrap();
+		get_widget!(builder, ApplicationWindow, window);
+		get_widget!(builder, HeaderBar, header_bar);
+		get_widget!(builder, Button, bt_calcular);
+		get_widget!(builder, Button, bt_calcula2);
+		get_widget!(builder, SpinButton,spin_area_bacia);
+		get_widget!(builder, SpinButton,spin_largura_bacia);
+		get_widget!(builder, SpinButton,spin_dec_talhao);
+		get_widget!(builder, SpinButton,spin_dec_canal);
+		get_widget!(builder, SpinButton,spin_coef_atrito);
+		get_widget!(builder, SpinButton,spin_profundidade);
+		get_widget!(builder, SpinButton,spin_retorno);
+		get_widget!(builder, Entry,entry_tempo_conc);
+		get_widget!(builder, Entry,entry_coef_escorrimento);
+		get_widget!(builder, Entry,entry_intensidade_max);
+		get_widget!(builder, Entry,entry_vazao_bacia);
+		get_widget!(builder, Entry,entry_volume_enxurrada);
+		get_widget!(builder, Entry,entry_esp_h);
+		get_widget!(builder, Entry,entry_esp_v);
+		get_widget!(builder, Entry,entry_sessao);
+		get_widget!(builder, Entry,entry_vel_max);
+		get_widget!(builder, Entry,entry_bb);
+		get_widget!(builder, Entry,entry_b);
+		get_widget!(builder, Entry,entry_y);
+		get_widget!(builder, Entry,entry_pm);
+		get_widget!(builder, Label,label_critica);
+		get_widget!(builder,Adjustment,adjustment_area);
 
-		let spin_area_bacia: SpinButton = builder.get_object("sb_area_bacia").unwrap();
-		let spin_largura_bacia: SpinButton = builder.get_object("spin_largura_bacia").unwrap();
-		let spin_dec_talhao: SpinButton = builder.get_object("spin_dec_talhao").unwrap();
-		let spin_dec_canal: SpinButton = builder.get_object("sb_dec_canal").unwrap();
-		let spin_coef_atrito: SpinButton = builder.get_object("spin_coef_atrito").unwrap();
-		let spin_profundidade: SpinButton = builder.get_object("spin_profundidade").unwrap();
-		let spin_retorno: SpinButton = builder.get_object("spin_retorno").unwrap();
+		get_widget!(builder,RadioButton,radiodec1);
+		get_widget!(builder,RadioButton,radiodec2);
+		get_widget!(builder,RadioButton,radiodec3);
+		get_widget!(builder,RadioButton,radiodec4);
+		get_widget!(builder,RadioButton,radiodec5);
+		get_widget!(builder,RadioButton,radiodec6);
+		get_widget!(builder,RadioButton,radiocob1);
+		get_widget!(builder,RadioButton,radiocob2);
+		get_widget!(builder,RadioButton,radiocob3);
+		get_widget!(builder,RadioButton,radiocob4);
+		get_widget!(builder,RadioButton,radiocob5);
+		get_widget!(builder,RadioButton,radiosol1);
+		get_widget!(builder,RadioButton,radiosol2);
+		get_widget!(builder,RadioButton,radiosol3);
+		get_widget!(builder,RadioButton,radioppt1);
+		get_widget!(builder,RadioButton,radioppt2);
+		get_widget!(builder,RadioButton,radiocultivo1);
+		get_widget!(builder,RadioButton,radiocultivo2);
+		get_widget!(builder,RadioButton,radioterraco1);
+		get_widget!(builder,RadioButton,radioterraco2);
+		get_widget!(builder,RadioButton,radiotextura1);
+		get_widget!(builder,RadioButton,radiotextura2);
+		get_widget!(builder,RadioButton,radiotextura3);
+		get_widget!(builder,RadioButton,radioerod1);
+		get_widget!(builder,RadioButton,radioerod2);
+		get_widget!(builder,RadioButton,radiocanalcob1);
+		get_widget!(builder,RadioButton,radiocanalcob2);
+		get_widget!(builder,RadioButton,radiocanalcob3);
+		get_widget!(builder,RadioButton,radiocanalcob4);
+		get_widget!(builder,RadioButton,radiocanalcob5);
+		get_widget!(builder,RadioButton,radiocanalcob6);
+		get_widget!(builder,RadioButton,radiocanalcob7);
+		get_widget!(builder,RadioButton,radiocanalcob8);
+		get_widget!(builder,RadioButton,radioformato1);
+		get_widget!(builder,RadioButton,radioformato2);
 
-		let entry_tempo_conc: Entry = builder.get_object("entry_tempo_conc").unwrap();
-		//let entry_tempo_conc_corrigido: Entry = builder.get_object("entry_tempo_conc_corrigido").unwrap();
-		let entry_coef_escorrimento: Entry = builder.get_object("entry_coef_escorrimento").unwrap();
-		let entry_intensidade_max: Entry = builder.get_object("entry_intensidade_max").unwrap();
-		let entry_vazao_bacia: Entry = builder.get_object("entry_vazao_bacia").unwrap();
-		let entry_volume_enxurrada: Entry = builder.get_object("entry_volume_enxurrada").unwrap();
-
-		let entry_esp_h: Entry = builder.get_object("entry_esp_h").unwrap();
-		let entry_esp_v: Entry = builder.get_object("entry_esp_v").unwrap();
-		let entry_sessao: Entry = builder.get_object("entry_sessao").unwrap();
-		let entry_vel_max: Entry = builder.get_object("entry_vel_max").unwrap();
-		//let entry_h: Entry = builder.get_object("entry_h").unwrap();
-		let entry_bb: Entry = builder.get_object("entry_bb").unwrap();
-		let entry_b: Entry = builder.get_object("entry_b").unwrap();
-		let entry_y: Entry = builder.get_object("entry_y").unwrap();
-		let entry_pm: Entry = builder.get_object("entry_pm").unwrap();
-
-		let label_critica: Label = builder.get_object("label_critica").unwrap();
-
-		let adjustment_area: Adjustment = builder.get_object("adjustment_area").unwrap();
-
-		let radiodec1: RadioButton = builder.get_object("radiodec1").unwrap();
-		let radiodec2: RadioButton = builder.get_object("radiodec2").unwrap();
-		let radiodec3: RadioButton = builder.get_object("radiodec3").unwrap();
-		let radiodec4: RadioButton = builder.get_object("radiodec4").unwrap();
-		let radiodec5: RadioButton = builder.get_object("radiodec5").unwrap();
-		let radiodec6: RadioButton = builder.get_object("radiodec6").unwrap();
-
-		let radiocob1: RadioButton = builder.get_object("radiocob1").unwrap();
-		let radiocob2: RadioButton = builder.get_object("radiocob2").unwrap();
-		let radiocob3: RadioButton = builder.get_object("radiocob3").unwrap();
-		let radiocob4: RadioButton = builder.get_object("radiocob4").unwrap();
-		let radiocob5: RadioButton = builder.get_object("radiocob5").unwrap();
-
-		let radiosol1: RadioButton = builder.get_object("radiosol1").unwrap();
-		let radiosol2: RadioButton = builder.get_object("radiosol2").unwrap();
-		let radiosol3: RadioButton = builder.get_object("radiosol3").unwrap();
-
-		let radioppt1: RadioButton = builder.get_object("radioppt1").unwrap();
-		let radioppt2: RadioButton = builder.get_object("radioppt2").unwrap();
-
-		let radiocultivo1: RadioButton = builder.get_object("radiocultivo1").unwrap();
-		let radiocultivo2: RadioButton = builder.get_object("radiocultivo2").unwrap();
-
-		let radioterraco1: RadioButton = builder.get_object("radioterraco1").unwrap();
-		let radioterraco2: RadioButton = builder.get_object("radioterraco2").unwrap();
-
-		let radiotextura1: RadioButton = builder.get_object("radiotextura1").unwrap();
-		let radiotextura2: RadioButton = builder.get_object("radiotextura2").unwrap();
-		let radiotextura3: RadioButton = builder.get_object("radiotextura3").unwrap();
-
-		let radioerod1: RadioButton = builder.get_object("radioerod1").unwrap();
-		let radioerod2: RadioButton = builder.get_object("radioerod2").unwrap();
-
-		let radiocanalcob1: RadioButton = builder.get_object("radiocanalcob1").unwrap();
-		let radiocanalcob2: RadioButton = builder.get_object("radiocanalcob2").unwrap();
-		let radiocanalcob3: RadioButton = builder.get_object("radiocanalcob3").unwrap();
-		let radiocanalcob4: RadioButton = builder.get_object("radiocanalcob4").unwrap();
-		let radiocanalcob5: RadioButton = builder.get_object("radiocanalcob5").unwrap();
-		let radiocanalcob6: RadioButton = builder.get_object("radiocanalcob6").unwrap();
-		let radiocanalcob7: RadioButton = builder.get_object("radiocanalcob7").unwrap();
-		let radiocanalcob8: RadioButton = builder.get_object("radiocanalcob8").unwrap();
-
-		let radioformato1: RadioButton = builder.get_object("radioformato1").unwrap();
-		let radioformato2: RadioButton = builder.get_object("radioformato2").unwrap();
-
-		window.connect_delete_event(move |_,_| {
-			main_quit();
-    	 	       Inhibit(false)
-		});
+		//let window_clone = window.clone();
+		window.connect_delete_event(clone!(@strong window => move |_,_| {
+			//window.destroy();
+			gtk::main_quit();
+    	Inhibit(true)
+		}));
 
 		let atroxui = Rc::new(Self { builder, window, header_bar, bt_calcular, bt_calcula2, spin_area_bacia,
 				  spin_largura_bacia, spin_dec_talhao, spin_dec_canal, spin_coef_atrito,

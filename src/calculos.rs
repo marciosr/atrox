@@ -1,7 +1,6 @@
 #[allow(unused)]
 
 use std::rc::Rc;
-
 use crate::atroxui::ValorRadios;
 
 pub static COEFICIENTES: [[[f64; 6];3];5] = // ver o que fazer com isso
@@ -13,7 +12,7 @@ pub static COEFICIENTES: [[[f64; 6];3];5] = // ver o que fazer com isso
 		],
 		[
 			[0.40,0.48,0.54,0.61,0.67,0.75],
-		  	[0.34,0.41,0.46,0.52,0.56,0.64],
+		  [0.34,0.41,0.46,0.52,0.56,0.64],
 		 	[0.31,0.38,0.43,0.48,0.53,0.59]
 		],
 		[
