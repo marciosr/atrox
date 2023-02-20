@@ -191,7 +191,8 @@ fn calcula_tempo_conc (area_bacia: f64, largura_bacia: f64, declividade_talhao: 
 
 	if area_bacia > 500.0 {
 		println!("Válido apenas para bacias hidrográficas inferiores a 500ha!");
-		panic! ("Válido apenas para bacias hidrográficas inferiores a 500ha! {:?}");
+		panic! ("Válido apenas para bacias hidrográficas inferiores a 500ha!");
+
 	} else {
 		if area_bacia <= 3.0 {
 			tempo_concent = -0.1375 * area_bacia.powf(2.0) + 1.15 * area_bacia + 1.6875;

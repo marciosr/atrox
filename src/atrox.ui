@@ -1,0 +1,1165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <object class="GtkAdjustment" id="adj_retorno">
+    <property name="lower">1</property>
+    <property name="upper">200</property>
+    <property name="value">20</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="adjustment_area">
+    <property name="lower">1.0</property>
+    <property name="upper">400</property>
+    <property name="value">200</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="adjustment_coeficiente_atrito">
+    <property name="lower">0.01</property>
+    <property name="upper">2</property>
+    <property name="value">0.01</property>
+    <property name="step_increment">0.01</property>
+    <property name="page_increment">0.10</property>
+  </object>
+  <object class="GtkAdjustment" id="adjustment_declividade_canal">
+    <property name="lower">0.01</property>
+    <property name="upper">0.20</property>
+    <property name="step_increment">0.01</property>
+    <property name="page_increment">0.05</property>
+  </object>
+  <object class="GtkAdjustment" id="adjustment_declividade_talhao">
+    <property name="upper">100</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="adjustment_largura">
+    <property name="lower">0.01000000000000000021</property>
+    <property name="upper">5000</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkAdjustment" id="adjustment_profundidade">
+    <property name="lower">1</property>
+    <property name="upper">100</property>
+    <property name="value">25</property>
+    <property name="step_increment">1</property>
+    <property name="page_increment">10</property>
+  </object>
+  <object class="GtkApplicationWindow" id="window">
+    <child>
+      <object class="GtkNotebook">
+        <property name="focusable">1</property>
+        <child>
+          <object class="GtkNotebookPage">
+            <property name="child">
+              <object class="GtkGrid" id="area">
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="1">Declividade</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_dec1">
+                    <property name="label" translatable="1">Plana 0-2.5%</property>
+                    <property name="active">1</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_dec2">
+                    <property name="label" translatable="1">Suavemente ondulada 2.5-5%</property>
+                    <property name="group">check_dec1</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_dec3">
+                    <property name="label" translatable="1">Ondulada 5-10%</property>
+                    <property name="group">check_dec1</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">3</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_dec4">
+                    <property name="label" translatable="1">Fortemente ondulada 10-20%</property>
+                    <property name="group">check_dec1</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">4</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_dec5">
+                    <property name="label" translatable="1">Amorrada 20-40%</property>
+                    <property name="group">check_dec1</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">5</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_dec6">
+                    <property name="label" translatable="1">Montanhosa 40-100%</property>
+                    <property name="group">check_dec1</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">6</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="1">Cobertura do solo</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_cob1">
+                    <property name="label" translatable="1">Culturas anuais</property>
+                    <property name="active">1</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_cob2">
+                    <property name="label" translatable="1">Culturas permanentes</property>
+                    <property name="group">check_cob1</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_cob3">
+                    <property name="label" translatable="1">Pastagens limpas</property>
+                    <property name="group">check_cob1</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">3</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_cob4">
+                    <property name="label" translatable="1">Capoeiras</property>
+                    <property name="group">check_cob1</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">4</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_cob5">
+                    <property name="label" translatable="1">Matas</property>
+                    <property name="group">check_cob1</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">5</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="1">Tipo de solo</property>
+                    <layout>
+                      <property name="column">2</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_sol1">
+                    <property name="label" translatable="1">Argiloso</property>
+                    <property name="active">1</property>
+                    <layout>
+                      <property name="column">2</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_sol3">
+                    <property name="label" translatable="1">Roxo</property>
+                    <property name="group">check_sol1</property>
+                    <layout>
+                      <property name="column">2</property>
+                      <property name="row">3</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="bt_calcula2">
+                    <property name="label" translatable="1">Calcular</property>
+                    <property name="focusable">1</property>
+                    <property name="receives_default">1</property>
+                    <layout>
+                      <property name="column">2</property>
+                      <property name="row">12</property>
+                      <property name="column-span">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_sol2">
+                    <property name="label" translatable="1">Arenoso</property>
+                    <property name="group">check_sol1</property>
+                    <layout>
+                      <property name="column">2</property>
+                      <property name="row">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="1">Área da bacia (ha)</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">7</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="lb_retorno">
+                    <property name="label" translatable="1">Tempo de retorno (anos)</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">8</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkSpinButton" id="spin_retorno">
+                    <property name="focusable">1</property>
+                    <property name="adjustment">adj_retorno</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">8</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="1">Precipitação Média</property>
+                    <layout>
+                      <property name="column">3</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_ppt1">
+                    <property name="label" translatable="1">Precipitação &lt; 1400 mm</property>
+
+                    <property name="active">1</property>
+                    <layout>
+                      <property name="column">3</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_ppt2">
+                    <property name="label" translatable="1">Precipitação &gt;= 1400 mm</property>
+
+                    <property name="group">check_ppt1</property>
+                    <layout>
+                      <property name="column">3</property>
+                      <property name="row">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkSpinButton" id="spin_largura_bacia">
+                    <property name="focusable">1</property>
+                    <property name="text" translatable="1">1000</property>
+                    <property name="adjustment">adjustment_largura</property>
+                    <property name="value">1000</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">11</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="entry_tempo_conc">
+                    <property name="focusable">1</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">10</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="1">Largura da bacia (m)</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">11</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="1">Tempo de concentração</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">10</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="1">Resultado</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">9</property>
+                      <property name="column-span">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="1">Coeficiente de escorrimento</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">12</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="entry_coef_escorrimento">
+                    <property name="focusable">1</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">12</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="1">Intensidade máxima de chuva (mm/h)</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">13</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="entry_intensidade_max">
+                    <property name="focusable">1</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">13</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="1">Vazão máxima da bacia (m³/s)</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">14</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="entry_vazao_bacia">
+                    <property name="focusable">1</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">14</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="1">Volume de enxurrada da bacia (m³)</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">15</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="entry_volume_enxurrada">
+                    <property name="focusable">1</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">15</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkSpinButton" id="spin_area_bacia">
+                    <property name="focusable">1</property>
+                    <property name="adjustment">adjustment_area</property>
+                    <property name="value">200</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">7</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+              </object>
+            </property>
+            <property name="tab">
+              <object class="GtkLabel">
+                <property name="label" translatable="1">Dados da área</property>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkNotebookPage">
+            <property name="position">1</property>
+            <property name="child">
+              <object class="GtkGrid" id="espacamento">
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="1">Tipo de cultivo</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="1">Tipo de terraço</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_cultivo1">
+                    <property name="label" translatable="1">Culturas perenes</property>
+                    <property name="active">1</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_cultivo2">
+                    <property name="label" translatable="1">Culturas anuais</property>
+                    <property name="group">check_cultivo1</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_terraco1">
+                    <property name="label" translatable="1">Em gradiente</property>
+                    <property name="active">1</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_terraco2">
+                    <property name="label" translatable="1">Nivelado</property>
+                    <property name="group">check_terraco1</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="1">Velocidade máxima suportada pelo canal</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">3</property>
+                      <property name="column-span">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="1">Textura do solo</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">4</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_textura1">
+                    <property name="label" translatable="1">Argilosa</property>
+                    <property name="active">1</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">5</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_textura2">
+                    <property name="label" translatable="1">Média</property>
+                    <property name="group">check_textura1</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">6</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_textura3">
+                    <property name="label" translatable="1">Arenosa</property>
+                    <property name="group">check_textura1</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">7</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="1">Erodibilidade do solo</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">8</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_erod1">
+                    <property name="label" translatable="1">Solo muito erodível</property>
+                    <property name="active">1</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">9</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_erod2">
+                    <property name="label" translatable="1">Solo pouco erodível</property>
+                    <property name="group">check_erod1</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">10</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="1">Cobertura do canal</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">4</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_cob_canal1">
+                    <property name="label" translatable="1">Sem cobertura</property>
+                    <property name="active">1</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">5</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_cob_canal2">
+                    <property name="label" translatable="1">Canal cultivado</property>
+                    <property name="group">check_cob_canal1</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">6</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_cob_canal3">
+                    <property name="label" translatable="1">Gramíneas anuais (estande regular)</property>
+                    <property name="group">check_cob_canal1</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">7</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_cob_canal4">
+                    <property name="label" translatable="1">Gramíneas anuais (estande bom)</property>
+                    <property name="group">check_cob_canal1</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">8</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_cob_canal5">
+                    <property name="label" translatable="1">Gramíneas de densidade média (estande regular)</property>
+                    <property name="group">check_cob_canal1</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">9</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_cob_canal6">
+                    <property name="label" translatable="1">Gramíneas de densidade média (estande bom)</property>
+                    <property name="group">check_cob_canal1</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">10</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_cob_canal7">
+                    <property name="label" translatable="1">Gramíneas de densidade média (estande ótimo)</property>
+                    <property name="group">check_cob_canal1</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">11</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_cob_canal8">
+                    <property name="label" translatable="1">Gramíneas densas (estande ótimo)</property>
+                    <property name="group">check_cob_canal1</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">12</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="1">Declividade do talhão (%)</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">13</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkSpinButton" id="spin_dec_talhao">
+                    <property name="focusable">1</property>
+                    <property name="text" translatable="1">5.00</property>
+                    <property name="adjustment">adjustment_declividade_talhao</property>
+                    <property name="digits">2</property>
+                    <property name="value">5</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">13</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="butesp">
+                    <property name="label" translatable="1">Calcular espaçamento dos terraços</property>
+                    <property name="focusable">1</property>
+                    <property name="receives_default">1</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">14</property>
+                      <property name="column-span">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="1">Espaçamento horizontal</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">15</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="entry_esp_h">
+                    <property name="focusable">1</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">15</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="1">Espaçamento vertical</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">16</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="entry_esp_v">
+                    <property name="focusable">1</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">16</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="entry_sessao">
+                    <property name="focusable">1</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">18</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="1">Área da sessão transversal do terraço</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">18</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="1">Velocidade máxima no canal (m/s)</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">17</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="entry_vel_max">
+                    <property name="focusable">1</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">17</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+              </object>
+            </property>
+            <property name="tab">
+              <object class="GtkLabel">
+                <property name="label" translatable="1">Espaçamento entre terraços</property>
+              </object>
+            </property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkNotebookPage">
+            <property name="position">2</property>
+            <property name="child">
+              <object class="GtkGrid" id="sessao">
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="1">Formato da sessão transversal</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_formato1">
+                    <property name="label" translatable="1">Trapezoidal</property>
+                    <property name="active">1</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkCheckButton" id="check_formato2">
+                    <property name="label" translatable="1">Triangular</property>
+                    <property name="group">check_formato1</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="1">Declividade do canal (m/m)</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="1">Coeficiente de atrito do canal</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkSpinButton" id="spin_coef_atrito">
+                    <property name="focusable">1</property>
+                    <property name="text" translatable="1">0.01</property>
+                    <property name="adjustment">adjustment_coeficiente_atrito</property>
+                    <property name="climb_rate">0.01000000000000000021</property>
+                    <property name="digits">4</property>
+                    <property name="value">0.01000000000000000021</property>
+                    <layout>
+                      <property name="column">2</property>
+                      <property name="row">1</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="butvelocidade">
+                    <property name="label" translatable="1">Verificar velocidade da água</property>
+                    <property name="focusable">1</property>
+                    <property name="receives_default">1</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">2</property>
+                      <property name="column-span">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="1">Velocidade calculada</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">3</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkEntry">
+                    <property name="focusable">1</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">3</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="labelresultado">
+                    <property name="label" translatable="1">Critica do cálculo</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">4</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="margin_top">10</property>
+                    <property name="margin_bottom">5</property>
+                    <property name="label" translatable="1">Dimensões do canal do terraço (m)</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">6</property>
+                      <property name="column-span">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="1">Profundidade de corte do arado (cm)</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">7</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="1">Base maior  B (m)</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">8</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="1">Base menor b (m)</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">9</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="1">Projeção horizontal do talude Y  (m)</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">10</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel">
+                    <property name="label" translatable="1">Perímetro molhado PM (m)</property>
+                    <layout>
+                      <property name="column">0</property>
+                      <property name="row">11</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="entry_bb">
+                    <property name="focusable">1</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">8</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="entry_b">
+                    <property name="focusable">1</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">9</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="entry_y">
+                    <property name="focusable">1</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">10</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkEntry" id="entry_pm">
+                    <property name="focusable">1</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">11</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="label_critica">
+                    <property name="wrap">1</property>
+                    <property name="selectable">1</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">4</property>
+                      <property name="column-span">2</property>
+                      <property name="row-span">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkButton" id="bt_calcula_tudo">
+                    <property name="label" translatable="1">Executar cálculos</property>
+                    <property name="focusable">1</property>
+                    <property name="receives_default">1</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">12</property>
+                      <property name="column-span">2</property>
+                      <property name="row-span">2</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkSpinButton" id="spin_profundidade">
+                    <property name="focusable">1</property>
+                    <property name="text" translatable="1">0.25</property>
+                    <property name="adjustment">adjustment_profundidade</property>
+                    <property name="value">25</property>
+                    <layout>
+                      <property name="column">1</property>
+                      <property name="row">7</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <object class="GtkSpinButton" id="spin_dec_canal">
+                    <property name="focusable">1</property>
+                    <property name="adjustment">adjustment_declividade_canal</property>
+                    <property name="digits">2</property>
+                    <layout>
+                      <property name="column">2</property>
+                      <property name="row">0</property>
+                    </layout>
+                  </object>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+                <child>
+                  <placeholder/>
+                </child>
+              </object>
+            </property>
+            <property name="tab">
+              <object class="GtkLabel">
+                <property name="label" translatable="1">Sessão transversão do terraço</property>
+              </object>
+            </property>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child type="titlebar">
+      <object class="GtkHeaderBar" id="header_bar">
+        <child>
+          <placeholder/>
+        </child>
+        <child>
+          <object class="GtkButton" id="bt_calcular">
+            <property name="label" translatable="1">Calcular</property>
+            <property name="focusable">1</property>
+            <property name="receives_default">1</property>
+            <property name="tooltip_text" translatable="1">Executar os cálculos</property>
+            <style>
+              <class name="suggested-action"/>
+            </style>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>

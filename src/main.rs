@@ -2,9 +2,11 @@
 #[allow(unused)]
 
 extern crate gtk;
-extern crate glib;
 
 use gtk::prelude::*;
+use gtk::{ Application, glib };
+use glib::ExitCode;
+
 
 #[macro_use]
 mod utils;
@@ -13,16 +15,18 @@ mod calculos;
 
 use crate::atroxui::AtroxUi;
 
-fn main() {
-	if gtk::init().is_err() {
-    	println!("A inicialização do gtk falhou.");
-    	return;
-	}
+fn main() -> ExitCode {
 
-	let ui = AtroxUi::new();
+	let application = Application::new(Some("com.github.marciosr.atrox"),
+		Default::default());
 
-	ui.run(ui.clone());
-	ui.window.show_all();
+	application.connect_activate(move|app|{
+		let atrox = AtroxUi::new();
+		let window = atrox.window.clone();
+		app.add_window(&window);
+		atrox.run(atrox.clone());
+		window.show();
+	});
 
-	gtk::main();
+    application.run()
 }
