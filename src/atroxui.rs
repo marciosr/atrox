@@ -1,8 +1,9 @@
 #[allow(unused)]
+//use gtk4 as gtk;
 use gtk::prelude::*;
-use gtk::{Builder, Button, Label, HeaderBar, ApplicationWindow, Entry, SpinButton, RadioButton, Adjustment};
+use gtk::{Builder, Button, Label, HeaderBar, ApplicationWindow, Entry, SpinButton, CheckButton, Adjustment, glib};
 use std::rc::Rc;
-use glib::{clone};
+//use glib::{clone};
 
 use crate::calculos::Calculos;
 
@@ -54,47 +55,47 @@ pub struct AtroxUi {
 	pub entry_pm:		Entry,
 	pub label_critica: 	Label,
 	pub adjustment_area: Adjustment,
-	pub radiodec1: 		RadioButton,
-	pub radiodec2: 		RadioButton,
-	pub radiodec3: 		RadioButton,
-	pub radiodec4: 		RadioButton,
-	pub radiodec5: 		RadioButton,
-	pub radiodec6: 		RadioButton,
-	pub radiocob1: 		RadioButton,
-	pub radiocob2: 		RadioButton,
-	pub radiocob3: 		RadioButton,
-	pub radiocob4: 		RadioButton,
-	pub radiocob5: 		RadioButton,
-	pub radiosol1: 		RadioButton,
-	pub radiosol2: 		RadioButton,
-	pub radiosol3: 		RadioButton,
-	pub radioppt1: 		RadioButton,
-	pub radioppt2: 		RadioButton,
-	pub radiocultivo1: 	RadioButton,
-	pub radiocultivo2: 	RadioButton,
-	pub radioterraco1: 	RadioButton,
-	pub radioterraco2: 	RadioButton,
-	pub radiotextura1: 	RadioButton,
-	pub radiotextura2: 	RadioButton,
-	pub radiotextura3: 	RadioButton,
-	pub radioerod1: 	RadioButton,
-	pub radioerod2: 	RadioButton,
-	pub radiocanalcob1: RadioButton,
-	pub radiocanalcob2: RadioButton,
-	pub radiocanalcob3: RadioButton,
-	pub radiocanalcob4: RadioButton,
-	pub radiocanalcob5: RadioButton,
-	pub radiocanalcob6: RadioButton,
-	pub radiocanalcob7: RadioButton,
-	pub radiocanalcob8: RadioButton,
-	pub radioformato1: 	RadioButton,
-	pub radioformato2: 	RadioButton,
+	pub check_dec1: 		CheckButton,
+	pub check_dec2: 		CheckButton,
+	pub check_dec3: 		CheckButton,
+	pub check_dec4: 		CheckButton,
+	pub check_dec5: 		CheckButton,
+	pub check_dec6: 		CheckButton,
+	pub check_cob1: 		CheckButton,
+	pub check_cob2: 		CheckButton,
+	pub check_cob3: 		CheckButton,
+	pub check_cob4: 		CheckButton,
+	pub check_cob5: 		CheckButton,
+	pub check_sol1: 		CheckButton,
+	pub check_sol2: 		CheckButton,
+	pub check_sol3: 		CheckButton,
+	pub check_ppt1: 		CheckButton,
+	pub check_ppt2: 		CheckButton,
+	pub check_cultivo1: 	CheckButton,
+	pub check_cultivo2: 	CheckButton,
+	pub check_terraco1: 	CheckButton,
+	pub check_terraco2: 	CheckButton,
+	pub check_textura1: 	CheckButton,
+	pub check_textura2: 	CheckButton,
+	pub check_textura3: 	CheckButton,
+	pub check_erod1: 	CheckButton,
+	pub check_erod2: 	CheckButton,
+	pub check_cob_canal1: CheckButton,
+	pub check_cob_canal2: CheckButton,
+	pub check_cob_canal3: CheckButton,
+	pub check_cob_canal4: CheckButton,
+	pub check_cob_canal5: CheckButton,
+	pub check_cob_canal6: CheckButton,
+	pub check_cob_canal7: CheckButton,
+	pub check_cob_canal8: CheckButton,
+	pub check_formato1: 	CheckButton,
+	pub check_formato2: 	CheckButton,
 }
 
 impl AtroxUi {
 	pub fn new() -> Rc<Self> {
 
-		let glade_src = include_str!("atrox-rs.ui");
+		let glade_src = include_str!("atrox.ui");
 		let builder = gtk::Builder::from_string(glade_src);
 
 		get_widget!(builder, ApplicationWindow, window);
@@ -124,48 +125,48 @@ impl AtroxUi {
 		get_widget!(builder, Label,label_critica);
 		get_widget!(builder,Adjustment,adjustment_area);
 
-		get_widget!(builder,RadioButton,radiodec1);
-		get_widget!(builder,RadioButton,radiodec2);
-		get_widget!(builder,RadioButton,radiodec3);
-		get_widget!(builder,RadioButton,radiodec4);
-		get_widget!(builder,RadioButton,radiodec5);
-		get_widget!(builder,RadioButton,radiodec6);
-		get_widget!(builder,RadioButton,radiocob1);
-		get_widget!(builder,RadioButton,radiocob2);
-		get_widget!(builder,RadioButton,radiocob3);
-		get_widget!(builder,RadioButton,radiocob4);
-		get_widget!(builder,RadioButton,radiocob5);
-		get_widget!(builder,RadioButton,radiosol1);
-		get_widget!(builder,RadioButton,radiosol2);
-		get_widget!(builder,RadioButton,radiosol3);
-		get_widget!(builder,RadioButton,radioppt1);
-		get_widget!(builder,RadioButton,radioppt2);
-		get_widget!(builder,RadioButton,radiocultivo1);
-		get_widget!(builder,RadioButton,radiocultivo2);
-		get_widget!(builder,RadioButton,radioterraco1);
-		get_widget!(builder,RadioButton,radioterraco2);
-		get_widget!(builder,RadioButton,radiotextura1);
-		get_widget!(builder,RadioButton,radiotextura2);
-		get_widget!(builder,RadioButton,radiotextura3);
-		get_widget!(builder,RadioButton,radioerod1);
-		get_widget!(builder,RadioButton,radioerod2);
-		get_widget!(builder,RadioButton,radiocanalcob1);
-		get_widget!(builder,RadioButton,radiocanalcob2);
-		get_widget!(builder,RadioButton,radiocanalcob3);
-		get_widget!(builder,RadioButton,radiocanalcob4);
-		get_widget!(builder,RadioButton,radiocanalcob5);
-		get_widget!(builder,RadioButton,radiocanalcob6);
-		get_widget!(builder,RadioButton,radiocanalcob7);
-		get_widget!(builder,RadioButton,radiocanalcob8);
-		get_widget!(builder,RadioButton,radioformato1);
-		get_widget!(builder,RadioButton,radioformato2);
+		get_widget!(builder,CheckButton,check_dec1);
+		get_widget!(builder,CheckButton,check_dec2);
+		get_widget!(builder,CheckButton,check_dec3);
+		get_widget!(builder,CheckButton,check_dec4);
+		get_widget!(builder,CheckButton,check_dec5);
+		get_widget!(builder,CheckButton,check_dec6);
+		get_widget!(builder,CheckButton,check_cob1);
+		get_widget!(builder,CheckButton,check_cob2);
+		get_widget!(builder,CheckButton,check_cob3);
+		get_widget!(builder,CheckButton,check_cob4);
+		get_widget!(builder,CheckButton,check_cob5);
+		get_widget!(builder,CheckButton,check_sol1);
+		get_widget!(builder,CheckButton,check_sol2);
+		get_widget!(builder,CheckButton,check_sol3);
+		get_widget!(builder,CheckButton,check_ppt1);
+		get_widget!(builder,CheckButton,check_ppt2);
+		get_widget!(builder,CheckButton,check_cultivo1);
+		get_widget!(builder,CheckButton,check_cultivo2);
+		get_widget!(builder,CheckButton,check_terraco1);
+		get_widget!(builder,CheckButton,check_terraco2);
+		get_widget!(builder,CheckButton,check_textura1);
+		get_widget!(builder,CheckButton,check_textura2);
+		get_widget!(builder,CheckButton,check_textura3);
+		get_widget!(builder,CheckButton,check_erod1);
+		get_widget!(builder,CheckButton,check_erod2);
+		get_widget!(builder,CheckButton,check_cob_canal1);
+		get_widget!(builder,CheckButton,check_cob_canal2);
+		get_widget!(builder,CheckButton,check_cob_canal3);
+		get_widget!(builder,CheckButton,check_cob_canal4);
+		get_widget!(builder,CheckButton,check_cob_canal5);
+		get_widget!(builder,CheckButton,check_cob_canal6);
+		get_widget!(builder,CheckButton,check_cob_canal7);
+		get_widget!(builder,CheckButton,check_cob_canal8);
+		get_widget!(builder,CheckButton,check_formato1);
+		get_widget!(builder,CheckButton,check_formato2);
 
 		//let window_clone = window.clone();
-		window.connect_delete_event(clone!(@strong window => move |_,_| {
+		// window.connect_delete_event(clone!(@strong window => move |_,_| {
 			//window.destroy();
-			gtk::main_quit();
-    	Inhibit(true)
-		}));
+		// 	gtk::main_quit();
+  //   	Inhibit(true)
+		// }));
 
 		let atroxui = Rc::new(Self { builder, window, header_bar, bt_calcular, bt_calcula2, spin_area_bacia,
 				  spin_largura_bacia, spin_dec_talhao, spin_dec_canal, spin_coef_atrito,
@@ -173,12 +174,12 @@ impl AtroxUi {
 				  entry_coef_escorrimento, entry_intensidade_max, entry_vazao_bacia,
 				  entry_volume_enxurrada, entry_esp_h, entry_esp_v, entry_sessao,
 				  entry_vel_max, entry_bb, entry_b, entry_y, entry_pm, label_critica,
-				  adjustment_area, radiodec1, radiodec2, radiodec3, radiodec4, radiodec5, radiodec6,
-				  radiocob1, radiocob2, radiocob3, radiocob4, radiocob5, radiosol1, radiosol2, radiosol3,
-				  radioppt1, radioppt2, radiocultivo1, radiocultivo2, radioterraco1, radioterraco2,
-				  radiotextura1, radiotextura2, radiotextura3, radioerod1, radioerod2, radiocanalcob1,
-				  radiocanalcob2, radiocanalcob3, radiocanalcob4, radiocanalcob5, radiocanalcob6,
-				  radiocanalcob7, radiocanalcob8, radioformato1, radioformato2
+				  adjustment_area, check_dec1, check_dec2, check_dec3, check_dec4, check_dec5, check_dec6,
+				  check_cob1, check_cob2, check_cob3, check_cob4, check_cob5, check_sol1, check_sol2, check_sol3,
+				  check_ppt1, check_ppt2, check_cultivo1, check_cultivo2, check_terraco1, check_terraco2,
+				  check_textura1, check_textura2, check_textura3, check_erod1, check_erod2, check_cob_canal1,
+				  check_cob_canal2, check_cob_canal3, check_cob_canal4, check_cob_canal5, check_cob_canal6,
+				  check_cob_canal7, check_cob_canal8, check_formato1, check_formato2
 		});
 		atroxui
 	}
@@ -237,6 +238,12 @@ impl AtroxUi {
 			ui.entry_y.set_text(&talude_y.to_string());
 			ui.entry_pm.set_text(&per_molhado.to_string());
 		});
+
+		self.window.connect_close_request(move |win| {
+			win.destroy();
+			glib::signal::Inhibit(false)
+		});
+
 	}
 }
 
@@ -250,49 +257,49 @@ pub fn radio_valores (ui: Rc<AtroxUi>) -> ValorRadios {
 				valor.$cons = $valor;
 			}
 		}
-	};
+	}
 
-	radio_ativo!(radiodec1, dec, 0);
-	radio_ativo!(radiodec2, dec, 1);
-	radio_ativo!(radiodec3, dec, 2);
-	radio_ativo!(radiodec4, dec, 3);
-	radio_ativo!(radiodec5, dec, 4);
-	radio_ativo!(radiodec6, dec, 5);
+	radio_ativo!(check_dec1, dec, 0);
+	radio_ativo!(check_dec2, dec, 1);
+	radio_ativo!(check_dec3, dec, 2);
+	radio_ativo!(check_dec4, dec, 3);
+	radio_ativo!(check_dec5, dec, 4);
+	radio_ativo!(check_dec6, dec, 5);
 
-	radio_ativo!(radiocob1, cob, 0);
-	radio_ativo!(radiocob2, cob, 1);
-	radio_ativo!(radiocob3, cob, 2);
-	radio_ativo!(radiocob4, cob, 3);
-	radio_ativo!(radiocob5, cob, 4);
+	radio_ativo!(check_cob1, cob, 0);
+	radio_ativo!(check_cob2, cob, 1);
+	radio_ativo!(check_cob3, cob, 2);
+	radio_ativo!(check_cob4, cob, 3);
+	radio_ativo!(check_cob5, cob, 4);
 
-	radio_ativo!(radiosol1, sol, 0);
-	radio_ativo!(radiosol2, sol, 1);
-	radio_ativo!(radiosol3, sol, 2);
+	radio_ativo!(check_sol1, sol, 0);
+	radio_ativo!(check_sol2, sol, 1);
+	radio_ativo!(check_sol3, sol, 2);
 
 
-	radio_ativo!(radioppt1, ppt, 0);
-	radio_ativo!(radioppt2, ppt, 1);
+	radio_ativo!(check_ppt1, ppt, 0);
+	radio_ativo!(check_ppt2, ppt, 1);
 
-	radio_ativo!(radiocultivo1, tct, 0);
-	radio_ativo!(radiocultivo2, tct, 1);
-	radio_ativo!(radioterraco1, tte, 0);
-	radio_ativo!(radioterraco2, tte, 1);
-	radio_ativo!(radiotextura1, tex, 0);
-	radio_ativo!(radiotextura2, tex, 1);
-	radio_ativo!(radiotextura3, tex, 2);
-	radio_ativo!(radioerod1, ero, 0);
-	radio_ativo!(radioerod2, ero, 1);
-	radio_ativo!(radiocanalcob1, can, 0);
-	radio_ativo!(radiocanalcob2, can, 1);
-	radio_ativo!(radiocanalcob3, can, 2);
-	radio_ativo!(radiocanalcob4, can, 3);
-	radio_ativo!(radiocanalcob5, can, 4);
+	radio_ativo!(check_cultivo1, tct, 0);
+	radio_ativo!(check_cultivo2, tct, 1);
+	radio_ativo!(check_terraco1, tte, 0);
+	radio_ativo!(check_terraco2, tte, 1);
+	radio_ativo!(check_textura1, tex, 0);
+	radio_ativo!(check_textura2, tex, 1);
+	radio_ativo!(check_textura3, tex, 2);
+	radio_ativo!(check_erod1, ero, 0);
+	radio_ativo!(check_erod2, ero, 1);
+	radio_ativo!(check_cob_canal1, can, 0);
+	radio_ativo!(check_cob_canal2, can, 1);
+	radio_ativo!(check_cob_canal3, can, 2);
+	radio_ativo!(check_cob_canal4, can, 3);
+	radio_ativo!(check_cob_canal5, can, 4);
 
-	radio_ativo!(radiocanalcob6, can, 5);
-	radio_ativo!(radiocanalcob7, can, 6);
-	radio_ativo!(radiocanalcob8, can, 7);
-	radio_ativo!(radioformato1, fmt, 0);
-	radio_ativo!(radioformato2, fmt, 0);
+	radio_ativo!(check_cob_canal6, can, 5);
+	radio_ativo!(check_cob_canal7, can, 6);
+	radio_ativo!(check_cob_canal8, can, 7);
+	radio_ativo!(check_formato1, fmt, 0);
+	radio_ativo!(check_formato2, fmt, 0);
 	valor
 }
 
