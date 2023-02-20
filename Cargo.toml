@@ -5,9 +5,9 @@ authors = ["marcio"]
 edition = "2018"
 
 [dependencies.gtk]
-version = "0.8.1"
-features = ["v3_16"]
+version = "0.17"
+features = ["v3_24"]
 
 [dependencies.glib]
-version = "0.9.3"
+version = "0.10.1"
 

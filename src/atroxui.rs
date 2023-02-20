@@ -95,7 +95,7 @@ impl AtroxUi {
 	pub fn new() -> Rc<Self> {
 
 		let glade_src = include_str!("atrox-rs.ui");
-		let builder = gtk::Builder::new_from_string(glade_src);
+		let builder = gtk::Builder::from_string(glade_src);
 
 		get_widget!(builder, ApplicationWindow, window);
 		get_widget!(builder, HeaderBar, header_bar);
@@ -200,13 +200,13 @@ impl AtroxUi {
 			let valor = radio_valores(ui.clone());
 
 			let calculos = Calculos::calcula_terraco(valor,
-													spin_area_bacia.get_value(),
-													spin_largura_bacia.get_value(),
-													spin_dec_talhao.get_value(),
-													spin_dec_canal.get_value(),
-													spin_coef_atrito.get_value(),
-													spin_profundidade.get_value(),
-													spin_retorno.get_value());
+													spin_area_bacia.value(),
+													spin_largura_bacia.value(),
+													spin_dec_talhao.value(),
+													spin_dec_canal.value(),
+													spin_coef_atrito.value(),
+													spin_profundidade.value(),
+													spin_retorno.value());
 			let temp_concent = calculos.tempo_concent;
 			let coef_escorrimento = calculos.coef_escorrimento;
 			let intens_max_chuva = calculos.intens_max_chuva;
@@ -246,7 +246,7 @@ pub fn radio_valores (ui: Rc<AtroxUi>) -> ValorRadios {
 
 	macro_rules! radio_ativo {
 		($radio:ident, $cons:ident, $valor:expr) => {
-			if ui.$radio.get_active() {
+			if ui.$radio.is_active() {
 				valor.$cons = $valor;
 			}
 		}
