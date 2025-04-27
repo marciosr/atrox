@@ -6,8 +6,8 @@ edition = "2021"
 
 [dependencies.gtk]
 package = "gtk4"
-version = "0.6"
-features = ["v4_8"]
+version = "0.9.6"
+#features = ["v4_18"]
 
 #[dependencies.glib]
 #version = "0.10.1"

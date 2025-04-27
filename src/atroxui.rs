@@ -3,7 +3,8 @@
 use gtk::prelude::*;
 use gtk::{Builder, Button, Label, HeaderBar, ApplicationWindow, Entry, SpinButton, CheckButton, Adjustment, glib};
 use std::rc::Rc;
-//use glib::{clone};
+use glib::Propagation;
+//use gtk::Inhibit;
 
 use crate::calculos::Calculos;
 
@@ -241,7 +242,7 @@ impl AtroxUi {
 
 		self.window.connect_close_request(move |win| {
 			win.destroy();
-			glib::signal::Inhibit(false)
+			Propagation::Stop
 		});
 
 	}
@@ -299,7 +300,7 @@ pub fn radio_valores (ui: Rc<AtroxUi>) -> ValorRadios {
 	radio_ativo!(check_cob_canal7, can, 6);
 	radio_ativo!(check_cob_canal8, can, 7);
 	radio_ativo!(check_formato1, fmt, 0);
-	radio_ativo!(check_formato2, fmt, 0);
+	radio_ativo!(check_formato2, fmt, 1);
 	valor
 }
 
