@@ -1,1 +1,0 @@
-/var/home/marcio/Projetos/Rust/atrox/target/debug/atrox: /var/home/marcio/Projetos/Rust/atrox/src/atrox.ui /var/home/marcio/Projetos/Rust/atrox/src/atroxui.rs /var/home/marcio/Projetos/Rust/atrox/src/calculos.rs /var/home/marcio/Projetos/Rust/atrox/src/main.rs /var/home/marcio/Projetos/Rust/atrox/src/utils.rs
